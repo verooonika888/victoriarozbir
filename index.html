@@ -36,7 +36,7 @@
     <style>
         /* --- VISUAL STYLE SYSTEM --- */
         :root {
-            /* ОНОВЛЕНО: Холодний срібний сірий колір (Cool Silver Gray) */
+            /* Холодний срібний сірий колір */
             --bg-color: #E8E8E8; 
             --text-main: #1C1917;
         }
@@ -50,7 +50,8 @@
 
         .serif { font-family: 'Playfair Display', serif; }
 
-        .text-dark-gray { color: #44403C; }
+        /* ОНОВЛЕНО: Світло-сірий срібний колір для тексту */
+        .text-light-silver { color: #9CA3AF; }
 
         /* ЕФЕКТ СРІБНОГО СВІТІННЯ (Silver Glow) */
         .silver-glow {
@@ -125,44 +126,50 @@
 </head>
 <body class="overflow-x-hidden bg-[#E8E8E8]">
 
-    <!-- SCREEN 1: HERO (ЗМІНЕНО) -->
+    <!-- SCREEN 1: HERO (ФІКСОВАНИЙ 100dvh, БЕЗ СКРОЛУ) -->
     <section class="h-[100dvh] w-full flex flex-col relative bg-[#E8E8E8] overflow-hidden">
         
-        <!-- ДАТА (ВИРІВНЯНА ПО ЦЕНТРУ) -->
+        <!-- ДАТА (ЦЕНТР) -->
         <div class="absolute top-6 left-1/2 -translate-x-1/2 z-30 w-max">
             <div class="inline-block border border-[#1C1917]/20 bg-[#1C1917] px-5 py-2 rounded-lg shadow-xl">
                 <span class="text-white text-xs md:text-sm font-semibold tracking-wide uppercase">21 лютого</span>
             </div>
         </div>
 
-        <!-- TOP: HEADLINE & TEXT (БЕЗ МІНУСОВИХ ВІДСТУПІВ, ЩОБ НЕ НАЛІЗАЛО) -->
-        <div class="pt-24 px-5 pb-4 md:pt-20 md:px-0 w-full z-20 text-center flex-none">
+        <!-- TOP: HEADLINE & TEXT -->
+        <!-- Зменшив padding-top (pt-20) для мобілок, щоб більше місця було фото -->
+        <div class="pt-20 px-5 pb-2 md:pt-20 md:px-0 w-full z-20 text-center flex-none">
             <h1 class="serif leading-[1.1] tracking-tight">
                 <span class="block text-[32px] md:text-6xl font-medium text-[#1C1917]">
                     <span class="font-bold mr-1">БЕЗКОШТОВНИЙ</span> Груповий розбір
                 </span>
                 
-                <span class="block text-[34px] md:text-6xl italic font-normal text-dark-gray mt-1">
+                <!-- ОНОВЛЕНО: Світло-сірий (срібний) колір -->
+                <span class="block text-[34px] md:text-6xl italic font-normal text-light-silver mt-1">
                     контенту та візуалу
                 </span>
             </h1>
 
-            <!-- ТЕКСТ: ЖИРНИЙ + СРІБНЕ СВІТІННЯ -->
             <p class="font-sans text-sm md:text-lg text-[#1C1917] font-extrabold silver-glow mt-3 leading-relaxed max-w-xs md:max-w-md mx-auto">
                 після якого твій профіль нарешті говорить про тебе, виглядає професійно і продає
             </p>
         </div>
 
-        <!-- MIDDLE: IMAGE (ПОВНІСТЮ ВМІЩУЄТЬСЯ) -->
-        <!-- flex-grow дозволяє блоку зайняти все вільне місце. object-contain показує все фото цілком. -->
-        <div class="relative flex-grow w-full flex items-end justify-center z-10 overflow-hidden min-h-0">
-            <img src="v1.jpg" alt="Expert" class="max-h-full w-auto object-contain object-bottom mx-auto">
+        <!-- MIDDLE: IMAGE (FULL WIDTH, COVER) -->
+        <!-- 
+           w-full: Ширина 100% екрану.
+           h-full: Висота 100% контейнера.
+           object-cover: Фото розтягується, заповнюючи весь простір без пробілів.
+           object-top: Фокусується на верхній частині (обличчя), низ обрізається при необхідності, але ширина повна.
+        -->
+        <div class="relative flex-grow w-full z-10 overflow-hidden min-h-0">
+            <img src="n4.JPG" alt="Expert" class="w-full h-full object-cover object-top">
             
-            <!-- Gradient at bottom to blend with footer area -->
-            <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#E8E8E8] to-transparent pointer-events-none"></div>
+            <!-- Градієнт знизу, щоб перехід до кнопки був плавним -->
+            <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#E8E8E8] to-transparent pointer-events-none"></div>
         </div>
 
-        <!-- BOTTOM: CTA BUTTON (ЗВИЧАЙНИЙ ПОТІК, НЕ НАЛІЗАЄ) -->
+        <!-- BOTTOM: CTA BUTTON -->
         <div class="w-full z-20 pb-8 pt-4 px-6 text-center bg-[#E8E8E8] relative flex-none">
             <p class="text-[#78716C] mb-3 font-medium text-xs tracking-wider uppercase">
                 Щоб прийняти участь, зареєструйся
