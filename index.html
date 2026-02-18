@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     
     <!-- Intl-Tel-Input CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
@@ -36,7 +36,8 @@
     <style>
         /* --- VISUAL STYLE SYSTEM --- */
         :root {
-            --bg-color: #F5F5F4;
+            /* Журнальний світло-сірий колір */
+            --bg-color: #F2F2F2; 
             --text-main: #1C1917;
         }
 
@@ -49,20 +50,27 @@
 
         .serif { font-family: 'Playfair Display', serif; }
 
-        /* Updated Text Styles for Light Background */
-        .text-dark-gray { color: #44403C; } /* Dark gray for specific text */
+        .text-dark-gray { color: #44403C; }
+
+        /* ЕФЕКТ СРІБНОГО СВІТІННЯ (Silver Glow) */
+        .silver-glow {
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.8),  /* Білий блік */
+                0 0 20px rgba(163, 163, 163, 0.6),  /* Світло-сіре сяйво */
+                0 0 30px rgba(115, 115, 115, 0.4);  /* Темніше срібло для глибини */
+        }
         
         /* Buttons */
         .btn-white {
             background-color: white; color: #1C1917; transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             cursor: pointer;
         }
         .btn-white:active { transform: scale(0.98); }
 
         .btn-dark {
             background-color: #1C1917; color: white; transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
             cursor: pointer;
         }
         .btn-dark:active { transform: scale(0.98); }
@@ -96,7 +104,6 @@
         input[type="radio"]:checked::before { transform: scale(1); }
         input[type="radio"]:checked { border-color: #1C1917; }
 
-        /* Стили лейблов вопросов */
         .form-label {
             display: block; font-size: 16px; text-transform: uppercase;
             letter-spacing: 0.05em; color: #44403C; font-weight: 700;
@@ -116,14 +123,14 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
-<body class="overflow-x-hidden bg-[#F5F5F4]">
+<body class="overflow-x-hidden bg-[#F2F2F2]">
 
-    <!-- SCREEN 1: HERO (UPDATED LAYOUT) -->
-    <section class="h-[100dvh] w-full flex flex-col justify-between relative bg-[#F5F5F4] overflow-hidden">
+    <!-- SCREEN 1: HERO -->
+    <section class="h-[100dvh] w-full flex flex-col justify-between relative bg-[#F2F2F2] overflow-hidden">
         
-        <!-- ДАТА (Top Left) - Changed to dark style for contrast on light BG -->
-        <div class="absolute top-6 left-4 z-30">
-            <div class="inline-block border border-[#1C1917]/20 bg-[#1C1917] px-4 py-2 rounded-lg">
+        <!-- ДАТА (ВИРІВНЯНА ПО ЦЕНТРУ) -->
+        <div class="absolute top-6 left-1/2 -translate-x-1/2 z-30">
+            <div class="inline-block border border-[#1C1917]/20 bg-[#1C1917] px-5 py-2 rounded-lg shadow-xl">
                 <span class="text-white text-xs md:text-sm font-semibold tracking-wide uppercase">21 лютого</span>
             </div>
         </div>
@@ -135,32 +142,31 @@
                     <span class="font-bold mr-1">БЕЗКОШТОВНИЙ</span> Груповий розбір
                 </span>
                 
-                <!-- ОНОВЛЕНО: Темно-сірий колір, без світіння -->
                 <span class="block text-[34px] md:text-6xl italic font-normal text-dark-gray mt-1">
                     контенту та візуалу
                 </span>
             </h1>
-            <p class="font-sans text-sm md:text-lg text-[#57534E] font-medium mt-3 leading-relaxed max-w-xs md:max-w-md mx-auto">
+
+            <!-- ТЕКСТ: ЖИРНИЙ + СРІБНЕ СВІТІННЯ -->
+            <p class="font-sans text-sm md:text-lg text-[#1C1917] font-extrabold silver-glow mt-3 leading-relaxed max-w-xs md:max-w-md mx-auto">
                 після якого твій профіль нарешті говорить про тебе, виглядає професійно і продає
             </p>
         </div>
 
-        <!-- MIDDLE: IMAGE -->
+        <!-- MIDDLE: IMAGE (ОТБЛИЗИЛ / ZOOMED OUT) -->
         <div class="relative flex-grow w-full -mt-2 md:-mt-8 z-10">
-            <!-- Image set to cover but centered/top aligned to keep face visible in middle -->
-            <img src="v1.jpg" alt="Expert" class="w-full h-full object-cover object-[center_30%] md:object-center scale-105">
+            <img src="n4.JPG" alt="Expert" class="w-full h-full object-cover object-center">
             
-            <!-- Gradient at the bottom to blend with button area -->
-            <div class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-[#F5F5F4] to-transparent"></div>
+            <!-- Gradient matching the new BG color #F2F2F2 -->
+            <div class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-[#F2F2F2] via-[#F2F2F2]/60 to-transparent"></div>
         </div>
 
         <!-- BOTTOM: CTA BUTTON -->
-        <div class="w-full z-20 pb-8 px-6 text-center bg-[#F5F5F4] -mt-10 relative">
+        <div class="w-full z-20 pb-8 px-6 text-center bg-[#F2F2F2] -mt-10 relative">
             <p class="text-[#78716C] mb-3 font-medium text-xs tracking-wider uppercase">
                 Щоб прийняти участь, зареєструйся
             </p>
             
-            <!-- Button changed to btn-dark for contrast on light background -->
             <button onclick="scrollToForm()" class="btn-dark w-full max-w-sm mx-auto px-6 py-4 rounded-xl text-base font-bold tracking-wide shadow-2xl">
                 ЗАРЕЄСТРУЙСЯ
             </button>
@@ -169,7 +175,7 @@
     </section>
 
     <!-- SCREEN 2: ANKETA -->
-    <section id="anketa-section" class="py-20 md:py-24 bg-[#F5F5F4] px-6 border-t border-[#E7E5E4]">
+    <section id="anketa-section" class="py-20 md:py-24 bg-[#F2F2F2] px-6 border-t border-[#E5E5E5]">
         <div class="container mx-auto max-w-xl">
             
             <div class="text-center mb-10 md:mb-12">
@@ -178,8 +184,8 @@
             </div>
 
             <form id="mainForm" class="space-y-6 md:space-y-8">
+                <!-- FORM FIELDS -->
                 
-                <!-- 1. Ім'я -->
                 <div class="space-y-2">
                     <label class="form-label">Твоє ім'я</label>
                     <input type="text" name="imya" id="imya" required minlength="3" class="input-field" placeholder="Ваше ім'я">
@@ -187,35 +193,30 @@
                     <p class="length-error">Мінімум 3 символи</p>
                 </div>
 
-                <!-- 2. Ніша -->
                 <div class="space-y-2">
                     <label class="form-label">Чим ти займаєшся?</label>
                     <input type="text" name="niche" required minlength="3" class="input-field" placeholder="Наприклад: Таргет, Психологія...">
                     <p class="length-error">Мінімум 3 символи</p>
                 </div>
 
-                <!-- 3. Труднощі -->
                 <div class="space-y-2">
                     <label class="form-label">Які труднощі ти відчуваєш з контентом та візуалом?</label>
                     <textarea name="difficulties" required minlength="3" rows="3" class="input-field" placeholder="Опишіть вашу ситуацію..."></textarea>
                     <p class="length-error">Мінімум 3 символи</p>
                 </div>
 
-                <!-- 4. Мета -->
                 <div class="space-y-2">
                     <label class="form-label">Яка твоя мета ведення профілю?</label>
                     <input type="text" name="goal" required minlength="3" class="input-field" placeholder="Наприклад: Продаж послуг, особистий бренд...">
                     <p class="length-error">Мінімум 3 символи</p>
                 </div>
 
-                <!-- 5. Соцмережі -->
                 <div class="space-y-2">
                     <label class="form-label">Посилання на соцмережі (Instagram)</label>
                     <input type="text" name="instagram" required minlength="3" class="input-field" placeholder="@username">
                     <p class="length-error">Мінімум 3 символи</p>
                 </div>
 
-                <!-- 6. Телефон -->
                 <div class="space-y-2">
                     <label class="form-label">Номер телефону для зв'язку</label>
                     <input type="tel" id="phone" name="phone" required class="input-field">
@@ -223,14 +224,12 @@
                     <p class="error-text" id="country-error">Реєстрація з цього регіону недоступна</p>
                 </div>
 
-                <!-- 7. ТГ Нік -->
                 <div class="space-y-2">
                     <label class="form-label">Нік у Telegram</label>
                     <input type="text" name="tg_nick" required minlength="3" class="input-field" placeholder="@username">
                     <p class="length-error">Мінімум 3 символи</p>
                 </div>
 
-                <!-- 8. Тип участі -->
                 <div class="space-y-3 pt-2">
                     <label class="flex items-center gap-3 p-4 border border-[#E5E5E5] rounded-xl bg-white cursor-pointer hover:border-[#1C1917] transition-colors">
                         <input type="radio" name="participation_type" value="audit" required>
@@ -242,15 +241,13 @@
                     </label>
                 </div>
 
-                <!-- Submit Button -->
                 <div class="pt-4">
                     <button type="submit" class="w-full btn-dark py-5 rounded-2xl font-medium text-lg flex justify-center items-center shadow-lg">
                         <span class="btn-text">ЗАПОВНИТИ АНКЕТУ</span>
                     </button>
                 </div>
 
-                <!-- Disclaimer -->
-                <div class="flex gap-3 items-start p-4 rounded-2xl border border-[#E7E5E4] bg-white">
+                <div class="flex gap-3 items-start p-4 rounded-2xl border border-[#D6D3D1] bg-white">
                     <span class="text-[#1C1917] text-xl leading-none mt-1">*</span>
                     <p class="text-[11px] md:text-xs text-[#78716C] leading-relaxed">
                         Обов'язково перевірте правильність вказаних вами даних, оскільки на них буде відправлене запрошення на розбори.
@@ -261,7 +258,7 @@
         </div>
     </section>
 
-    <footer class="py-8 text-center text-[#A8A29E] text-xs bg-[#F5F5F4]">
+    <footer class="py-8 text-center text-[#A8A29E] text-xs bg-[#F2F2F2]">
         <p>&copy; 2025 Всі права захищено.</p>
     </footer>
 
@@ -315,7 +312,6 @@
 
             let isValid = true;
 
-            // 1. Name Validation (No digits)
             const nameRegex = /\d/;
             if (nameRegex.test(nameInput.value)) {
                 nameInput.classList.add('input-error');
@@ -323,7 +319,6 @@
                 isValid = false;
             }
 
-            // 2. Length Validation (Min 3 chars)
             const textFields = ['imya', 'niche', 'goal', 'difficulties', 'instagram', 'tg_nick'];
             textFields.forEach(fieldName => {
                 const el = form.querySelector(`[name="${fieldName}"]`);
@@ -338,14 +333,12 @@
                 }
             });
 
-            // 3. Phone Format Validation
             if (!iti.isValidNumber()) {
                 input.classList.add('input-error');
                 phoneError.style.display = 'block';
                 isValid = false;
             }
 
-            // 4. Country Exclusion
             const countryData = iti.getSelectedCountryData();
             if (EXCLUDED_COUNTRIES.includes(countryData.iso2)) {
                 input.classList.add('input-error');
@@ -355,7 +348,6 @@
 
             if (!isValid) return;
 
-            // Prepare Data
             const originalText = btnText.innerText;
             btnText.innerHTML = '<span class="loader"></span>';
             btn.disabled = true;
@@ -384,8 +376,6 @@
             })
             .then(() => {
                 if(typeof fbq !== 'undefined') fbq('track', 'Lead');
-                
-                // ПЕРЕАДРЕСАЦІЯ НА КАНАЛ
                 window.location.href = TG_CHANNEL_URL;
             })
             .catch(err => {
