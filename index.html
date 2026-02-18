@@ -36,8 +36,8 @@
     <style>
         /* --- VISUAL STYLE SYSTEM --- */
         :root {
-            /* Журнальний світло-сірий колір */
-            --bg-color: #F2F2F2; 
+            /* ОНОВЛЕНО: Холодний срібний сірий колір (Cool Silver Gray) */
+            --bg-color: #E8E8E8; 
             --text-main: #1C1917;
         }
 
@@ -55,9 +55,9 @@
         /* ЕФЕКТ СРІБНОГО СВІТІННЯ (Silver Glow) */
         .silver-glow {
             text-shadow: 
-                0 0 10px rgba(255, 255, 255, 0.8),  /* Білий блік */
-                0 0 20px rgba(163, 163, 163, 0.6),  /* Світло-сіре сяйво */
-                0 0 30px rgba(115, 115, 115, 0.4);  /* Темніше срібло для глибини */
+                0 0 10px rgba(255, 255, 255, 0.9),
+                0 0 20px rgba(163, 163, 163, 0.5),
+                0 0 30px rgba(115, 115, 115, 0.3);
         }
         
         /* Buttons */
@@ -123,20 +123,20 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
-<body class="overflow-x-hidden bg-[#F2F2F2]">
+<body class="overflow-x-hidden bg-[#E8E8E8]">
 
-    <!-- SCREEN 1: HERO -->
-    <section class="h-[100dvh] w-full flex flex-col justify-between relative bg-[#F2F2F2] overflow-hidden">
+    <!-- SCREEN 1: HERO (ЗМІНЕНО) -->
+    <section class="h-[100dvh] w-full flex flex-col relative bg-[#E8E8E8] overflow-hidden">
         
         <!-- ДАТА (ВИРІВНЯНА ПО ЦЕНТРУ) -->
-        <div class="absolute top-6 left-1/2 -translate-x-1/2 z-30">
+        <div class="absolute top-6 left-1/2 -translate-x-1/2 z-30 w-max">
             <div class="inline-block border border-[#1C1917]/20 bg-[#1C1917] px-5 py-2 rounded-lg shadow-xl">
                 <span class="text-white text-xs md:text-sm font-semibold tracking-wide uppercase">21 лютого</span>
             </div>
         </div>
 
-        <!-- TOP: HEADLINE & TEXT -->
-        <div class="pt-24 px-5 md:pt-20 md:px-0 w-full z-20 text-center flex-none">
+        <!-- TOP: HEADLINE & TEXT (БЕЗ МІНУСОВИХ ВІДСТУПІВ, ЩОБ НЕ НАЛІЗАЛО) -->
+        <div class="pt-24 px-5 pb-4 md:pt-20 md:px-0 w-full z-20 text-center flex-none">
             <h1 class="serif leading-[1.1] tracking-tight">
                 <span class="block text-[32px] md:text-6xl font-medium text-[#1C1917]">
                     <span class="font-bold mr-1">БЕЗКОШТОВНИЙ</span> Груповий розбір
@@ -153,16 +153,17 @@
             </p>
         </div>
 
-        <!-- MIDDLE: IMAGE (ОТБЛИЗИЛ / ZOOMED OUT) -->
-        <div class="relative flex-grow w-full -mt-2 md:-mt-8 z-10">
-            <img src="v1.jpg" alt="Expert" class="w-full h-full object-cover object-center">
+        <!-- MIDDLE: IMAGE (ПОВНІСТЮ ВМІЩУЄТЬСЯ) -->
+        <!-- flex-grow дозволяє блоку зайняти все вільне місце. object-contain показує все фото цілком. -->
+        <div class="relative flex-grow w-full flex items-end justify-center z-10 overflow-hidden min-h-0">
+            <img src="n4.JPG" alt="Expert" class="max-h-full w-auto object-contain object-bottom mx-auto">
             
-            <!-- Gradient matching the new BG color #F2F2F2 -->
-            <div class="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-[#F2F2F2] via-[#F2F2F2]/60 to-transparent"></div>
+            <!-- Gradient at bottom to blend with footer area -->
+            <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#E8E8E8] to-transparent pointer-events-none"></div>
         </div>
 
-        <!-- BOTTOM: CTA BUTTON -->
-        <div class="w-full z-20 pb-8 px-6 text-center bg-[#F2F2F2] -mt-10 relative">
+        <!-- BOTTOM: CTA BUTTON (ЗВИЧАЙНИЙ ПОТІК, НЕ НАЛІЗАЄ) -->
+        <div class="w-full z-20 pb-8 pt-4 px-6 text-center bg-[#E8E8E8] relative flex-none">
             <p class="text-[#78716C] mb-3 font-medium text-xs tracking-wider uppercase">
                 Щоб прийняти участь, зареєструйся
             </p>
@@ -175,7 +176,7 @@
     </section>
 
     <!-- SCREEN 2: ANKETA -->
-    <section id="anketa-section" class="py-20 md:py-24 bg-[#F2F2F2] px-6 border-t border-[#E5E5E5]">
+    <section id="anketa-section" class="py-20 md:py-24 bg-[#E8E8E8] px-6 border-t border-[#D4D4D4]">
         <div class="container mx-auto max-w-xl">
             
             <div class="text-center mb-10 md:mb-12">
@@ -247,7 +248,7 @@
                     </button>
                 </div>
 
-                <div class="flex gap-3 items-start p-4 rounded-2xl border border-[#D6D3D1] bg-white">
+                <div class="flex gap-3 items-start p-4 rounded-2xl border border-[#D4D4D4] bg-white">
                     <span class="text-[#1C1917] text-xl leading-none mt-1">*</span>
                     <p class="text-[11px] md:text-xs text-[#78716C] leading-relaxed">
                         Обов'язково перевірте правильність вказаних вами даних, оскільки на них буде відправлене запрошення на розбори.
@@ -258,7 +259,7 @@
         </div>
     </section>
 
-    <footer class="py-8 text-center text-[#A8A29E] text-xs bg-[#F2F2F2]">
+    <footer class="py-8 text-center text-[#A8A29E] text-xs bg-[#E8E8E8]">
         <p>&copy; 2025 Всі права захищено.</p>
     </footer>
 
