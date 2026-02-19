@@ -50,10 +50,10 @@
 
         .serif { font-family: 'Playfair Display', serif; }
 
-        /* ОНОВЛЕНО: Світло-сірий срібний колір для тексту */
+        /* Світло-сірий срібний колір для тексту */
         .text-light-silver { color: #9CA3AF; }
 
-        /* ЕФЕКТ СРІБНОГО СВІТІННЯ (Silver Glow) */
+        /* ЕФЕКТ СРІБНОГО СВІТІННЯ */
         .silver-glow {
             text-shadow: 
                 0 0 10px rgba(255, 255, 255, 0.9),
@@ -126,25 +126,23 @@
 </head>
 <body class="overflow-x-hidden bg-[#E8E8E8]">
 
-    <!-- SCREEN 1: HERO (ФІКСОВАНИЙ 100dvh, БЕЗ СКРОЛУ) -->
+    <!-- SCREEN 1: HERO (NO SCROLL, FULL HEIGHT) -->
     <section class="h-[100dvh] w-full flex flex-col relative bg-[#E8E8E8] overflow-hidden">
         
-        <!-- ДАТА (ЦЕНТР) -->
+        <!-- ДАТА -->
         <div class="absolute top-6 left-1/2 -translate-x-1/2 z-30 w-max">
             <div class="inline-block border border-[#1C1917]/20 bg-[#1C1917] px-5 py-2 rounded-lg shadow-xl">
                 <span class="text-white text-xs md:text-sm font-semibold tracking-wide uppercase">21 лютого</span>
             </div>
         </div>
 
-        <!-- TOP: HEADLINE & TEXT -->
-        <!-- Зменшив padding-top (pt-20) для мобілок, щоб більше місця було фото -->
+        <!-- TOP: HEADLINE -->
         <div class="pt-20 px-5 pb-2 md:pt-20 md:px-0 w-full z-20 text-center flex-none">
             <h1 class="serif leading-[1.1] tracking-tight">
                 <span class="block text-[32px] md:text-6xl font-medium text-[#1C1917]">
                     <span class="font-bold mr-1">БЕЗКОШТОВНИЙ</span> Груповий розбір
                 </span>
                 
-                <!-- ОНОВЛЕНО: Світло-сірий (срібний) колір -->
                 <span class="block text-[34px] md:text-6xl italic font-normal text-light-silver mt-1">
                     контенту та візуалу
                 </span>
@@ -155,17 +153,9 @@
             </p>
         </div>
 
-        <!-- MIDDLE: IMAGE (FULL WIDTH, COVER) -->
-        <!-- 
-           w-full: Ширина 100% екрану.
-           h-full: Висота 100% контейнера.
-           object-cover: Фото розтягується, заповнюючи весь простір без пробілів.
-           object-top: Фокусується на верхній частині (обличчя), низ обрізається при необхідності, але ширина повна.
-        -->
+        <!-- MIDDLE: IMAGE (FULL WIDTH COVER) -->
         <div class="relative flex-grow w-full z-10 overflow-hidden min-h-0">
             <img src="v1.jpg" alt="Expert" class="w-full h-full object-cover object-top">
-            
-            <!-- Градієнт знизу, щоб перехід до кнопки був плавним -->
             <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#E8E8E8] to-transparent pointer-events-none"></div>
         </div>
 
@@ -192,8 +182,8 @@
             </div>
 
             <form id="mainForm" class="space-y-6 md:space-y-8">
-                <!-- FORM FIELDS -->
                 
+                <!-- FIELDS -->
                 <div class="space-y-2">
                     <label class="form-label">Твоє ім'я</label>
                     <input type="text" name="imya" id="imya" required minlength="3" class="input-field" placeholder="Ваше ім'я">
@@ -274,10 +264,11 @@
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
     <script>
         // --- CONFIGURATION ---
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz1Uoy5xzTYHglvws2R0Ri9NxwPGvyaOXIBGHK41VLd0GnEtLbulEeL9bQlCYprE1ic/exec'; 
         
-        // ВСТАВТЕ СЮДИ ПОСИЛАННЯ НА ТЕЛЕГРАМ-КАНАЛ
-        const TG_CHANNEL_URL = 'https://t.me/YOUR_CHANNEL_LINK'; 
+        // !!! ОНОВЛЕНЕ ПОСИЛАННЯ (ВАШЕ)
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrHYxuRxw3FWhWwxRGJRiqq81iqROjBLPOBU6iOXBcFSaT6HlQJlgA1jaoHwScWBoM/exec'; 
+        
+        const TG_CHANNEL_URL = 'https://t.me/YOUR_CHANNEL_LINK'; // <--- Ссылка на канал
         
         const EXCLUDED_COUNTRIES = ['ru', 'by'];
         // ---------------------
@@ -362,6 +353,7 @@
 
             const formData = new FormData(form);
             const data = {
+                sheetName: 'Холодка', // <--- ВОТ ЭТА НАСТРОЙКА ОТПРАВЛЯЕТ ДАННЫЕ В НОВУЮ ВКЛАДКУ
                 imya: formData.get('imya'),
                 phone: iti.getNumber(),
                 niche: formData.get('niche'),
