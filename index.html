@@ -155,7 +155,7 @@
 
         <!-- MIDDLE: IMAGE (FULL WIDTH COVER) -->
         <div class="relative flex-grow w-full z-10 overflow-hidden min-h-0">
-            <img src="v1.jpg" alt="Expert" class="w-full h-full object-cover object-top">
+            <img src="n4.JPG" alt="Expert" class="w-full h-full object-cover object-top">
             <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#E8E8E8] to-transparent pointer-events-none"></div>
         </div>
 
@@ -183,36 +183,36 @@
 
             <form id="mainForm" class="space-y-6 md:space-y-8">
                 
-                <!-- FIELDS -->
+                <!-- FIELDS (Оновлений текст помилок) -->
                 <div class="space-y-2">
                     <label class="form-label">Твоє ім'я</label>
                     <input type="text" name="imya" id="imya" required minlength="3" class="input-field" placeholder="Ваше ім'я">
                     <p class="error-text" id="name-error">Ім'я не може містити цифри</p>
-                    <p class="length-error">Мінімум 3 символи</p>
+                    <p class="length-error">Заповніть це поле</p>
                 </div>
 
                 <div class="space-y-2">
                     <label class="form-label">Чим ти займаєшся?</label>
                     <input type="text" name="niche" required minlength="3" class="input-field" placeholder="Наприклад: Таргет, Психологія...">
-                    <p class="length-error">Мінімум 3 символи</p>
+                    <p class="length-error">Заповніть це поле</p>
                 </div>
 
                 <div class="space-y-2">
                     <label class="form-label">Які труднощі ти відчуваєш з контентом та візуалом?</label>
                     <textarea name="difficulties" required minlength="3" rows="3" class="input-field" placeholder="Опишіть вашу ситуацію..."></textarea>
-                    <p class="length-error">Мінімум 3 символи</p>
+                    <p class="length-error">Заповніть це поле</p>
                 </div>
 
                 <div class="space-y-2">
                     <label class="form-label">Яка твоя мета ведення профілю?</label>
                     <input type="text" name="goal" required minlength="3" class="input-field" placeholder="Наприклад: Продаж послуг, особистий бренд...">
-                    <p class="length-error">Мінімум 3 символи</p>
+                    <p class="length-error">Заповніть це поле</p>
                 </div>
 
                 <div class="space-y-2">
                     <label class="form-label">Посилання на соцмережі (Instagram)</label>
                     <input type="text" name="instagram" required minlength="3" class="input-field" placeholder="@username">
-                    <p class="length-error">Мінімум 3 символи</p>
+                    <p class="length-error">Заповніть це поле</p>
                 </div>
 
                 <div class="space-y-2">
@@ -225,7 +225,7 @@
                 <div class="space-y-2">
                     <label class="form-label">Нік у Telegram</label>
                     <input type="text" name="tg_nick" required minlength="3" class="input-field" placeholder="@username">
-                    <p class="length-error">Мінімум 3 символи</p>
+                    <p class="length-error">Заповніть це поле</p>
                 </div>
 
                 <div class="space-y-3 pt-2">
@@ -264,11 +264,9 @@
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
     <script>
         // --- CONFIGURATION ---
-        
-        // !!! ОНОВЛЕНЕ ПОСИЛАННЯ (ВАШЕ)
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrHYxuRxw3FWhWwxRGJRiqq81iqROjBLPOBU6iOXBcFSaT6HlQJlgA1jaoHwScWBoM/exec'; 
         
-        const TG_CHANNEL_URL = 'https://t.me/+McouiE0gkvk2M2My'; // <--- Ссылка на канал
+        const TG_CHANNEL_URL = 'https://t.me/YOUR_CHANNEL_LINK'; // <--- Ссылка на канал
         
         const EXCLUDED_COUNTRIES = ['ru', 'by'];
         // ---------------------
@@ -353,7 +351,7 @@
 
             const formData = new FormData(form);
             const data = {
-                sheetName: 'Холодка', // <--- ВОТ ЭТА НАСТРОЙКА ОТПРАВЛЯЕТ ДАННЫЕ В НОВУЮ ВКЛАДКУ
+                sheetName: 'Холодка', 
                 imya: formData.get('imya'),
                 phone: iti.getNumber(),
                 niche: formData.get('niche'),
