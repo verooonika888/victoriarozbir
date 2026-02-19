@@ -14,10 +14,8 @@
     <!-- Intl-Tel-Input CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
 
-    <!-- Facebook Pixel -->
+    <!-- Facebook Pixel Code -->
     <script>
-        const PIXEL_ID = '1230047148487254'; // <--- ВСТАВИТЬ ID ПИКСЕЛЯ
-
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
         n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -27,11 +25,15 @@
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
         
-        if(PIXEL_ID !== '1230047148487254') {
-            fbq('init', PIXEL_ID);
-            fbq('track', 'PageView');
-        }
+        // Ініціалізація вашого ID
+        fbq('init', '1230047148487254');
+        // Відстеження перегляду сторінки
+        fbq('track', 'PageView');
     </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1230047148487254&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
 
     <style>
         /* --- VISUAL STYLE SYSTEM --- */
@@ -393,6 +395,7 @@
                 body: JSON.stringify(data)
             })
             .then(() => {
+                // ТУТ СПРАЦЬОВУЄ ПОДІЯ LEAD (КОНВЕРСІЯ)
                 if(typeof fbq !== 'undefined') fbq('track', 'Lead');
                 window.location.href = TG_CHANNEL_URL;
             })
