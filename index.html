@@ -181,62 +181,65 @@
                 <p class="text-[#78716C] font-light text-sm md:text-base">Заповніть форму, щоб подати заявку на розбір.</p>
             </div>
 
-            <form id="mainForm" class="space-y-6 md:space-y-8">
+            <!-- ДОДАНО novalidate ЩОБ ВИМКНУТИ СТАНДАРТНІ ПІДКАЗКИ БРАУЗЕРА -->
+            <form id="mainForm" class="space-y-6 md:space-y-8" novalidate>
                 
-                <!-- FIELDS (Оновлений текст помилок) -->
+                <!-- FIELDS (Прибрано minlength, текст помилки змінено) -->
+                
                 <div class="space-y-2">
                     <label class="form-label">Твоє ім'я</label>
-                    <input type="text" name="imya" id="imya" required minlength="3" class="input-field" placeholder="Ваше ім'я">
+                    <input type="text" name="imya" id="imya" class="input-field" placeholder="Ваше ім'я">
                     <p class="error-text" id="name-error">Ім'я не може містити цифри</p>
                     <p class="length-error">Заповніть це поле</p>
                 </div>
 
                 <div class="space-y-2">
                     <label class="form-label">Чим ти займаєшся?</label>
-                    <input type="text" name="niche" required minlength="3" class="input-field" placeholder="Наприклад: Таргет, Психологія...">
+                    <input type="text" name="niche" class="input-field" placeholder="Наприклад: Таргет, Психологія...">
                     <p class="length-error">Заповніть це поле</p>
                 </div>
 
                 <div class="space-y-2">
                     <label class="form-label">Які труднощі ти відчуваєш з контентом та візуалом?</label>
-                    <textarea name="difficulties" required minlength="3" rows="3" class="input-field" placeholder="Опишіть вашу ситуацію..."></textarea>
+                    <textarea name="difficulties" rows="3" class="input-field" placeholder="Опишіть вашу ситуацію..."></textarea>
                     <p class="length-error">Заповніть це поле</p>
                 </div>
 
                 <div class="space-y-2">
                     <label class="form-label">Яка твоя мета ведення профілю?</label>
-                    <input type="text" name="goal" required minlength="3" class="input-field" placeholder="Наприклад: Продаж послуг, особистий бренд...">
+                    <input type="text" name="goal" class="input-field" placeholder="Наприклад: Продаж послуг, особистий бренд...">
                     <p class="length-error">Заповніть це поле</p>
                 </div>
 
                 <div class="space-y-2">
                     <label class="form-label">Посилання на соцмережі (Instagram)</label>
-                    <input type="text" name="instagram" required minlength="3" class="input-field" placeholder="@username">
+                    <input type="text" name="instagram" class="input-field" placeholder="@username">
                     <p class="length-error">Заповніть це поле</p>
                 </div>
 
                 <div class="space-y-2">
                     <label class="form-label">Номер телефону для зв'язку</label>
-                    <input type="tel" id="phone" name="phone" required class="input-field">
+                    <input type="tel" id="phone" name="phone" class="input-field">
                     <p class="error-text" id="phone-error">Некоректний номер</p>
                     <p class="error-text" id="country-error">Реєстрація з цього регіону недоступна</p>
                 </div>
 
                 <div class="space-y-2">
                     <label class="form-label">Нік у Telegram</label>
-                    <input type="text" name="tg_nick" required minlength="3" class="input-field" placeholder="@username">
+                    <input type="text" name="tg_nick" class="input-field" placeholder="@username">
                     <p class="length-error">Заповніть це поле</p>
                 </div>
 
                 <div class="space-y-3 pt-2">
                     <label class="flex items-center gap-3 p-4 border border-[#E5E5E5] rounded-xl bg-white cursor-pointer hover:border-[#1C1917] transition-colors">
-                        <input type="radio" name="participation_type" value="audit" required>
+                        <input type="radio" name="participation_type" value="audit">
                         <span class="text-[#1C1917] text-lg font-medium">Хочу щоб мене розібрали</span>
                     </label>
                     <label class="flex items-center gap-3 p-4 border border-[#E5E5E5] rounded-xl bg-white cursor-pointer hover:border-[#1C1917] transition-colors">
-                        <input type="radio" name="participation_type" value="viewer" required>
+                        <input type="radio" name="participation_type" value="viewer">
                         <span class="text-[#1C1917] text-lg font-medium">Хочу бути глядачем</span>
                     </label>
+                    <p class="length-error" id="radio-error" style="margin-left: 4px;">Заповніть це поле</p>
                 </div>
 
                 <div class="pt-4">
@@ -299,6 +302,7 @@
             const nameError = document.getElementById('name-error');
             const phoneError = document.getElementById('phone-error');
             const countryError = document.getElementById('country-error');
+            const radioError = document.getElementById('radio-error');
             const btn = form.querySelector('button');
             const btnText = form.querySelector('.btn-text');
 
@@ -309,6 +313,7 @@
 
             let isValid = true;
 
+            // 1. Name Validation (No digits)
             const nameRegex = /\d/;
             if (nameRegex.test(nameInput.value)) {
                 nameInput.classList.add('input-error');
@@ -316,11 +321,13 @@
                 isValid = false;
             }
 
+            // 2. Length & Empty Validation
             const textFields = ['imya', 'niche', 'goal', 'difficulties', 'instagram', 'tg_nick'];
             textFields.forEach(fieldName => {
                 const el = form.querySelector(`[name="${fieldName}"]`);
                 if (el) {
                     const val = el.value.trim();
+                    // Якщо пусто АБО менше 3 символів
                     if (val.length < 3) {
                         el.classList.add('input-error');
                         const errorMsg = el.parentElement.querySelector('.length-error');
@@ -330,16 +337,29 @@
                 }
             });
 
+            // 3. Phone Format Validation
             if (!iti.isValidNumber()) {
                 input.classList.add('input-error');
                 phoneError.style.display = 'block';
                 isValid = false;
             }
 
+            // 4. Country Exclusion
             const countryData = iti.getSelectedCountryData();
             if (EXCLUDED_COUNTRIES.includes(countryData.iso2)) {
                 input.classList.add('input-error');
                 countryError.style.display = 'block';
+                isValid = false;
+            }
+
+            // 5. Radio Buttons Validation
+            const radioButtons = document.querySelectorAll('input[name="participation_type"]');
+            let radioChecked = false;
+            radioButtons.forEach(rb => {
+                if(rb.checked) radioChecked = true;
+            });
+            if (!radioChecked) {
+                if(radioError) radioError.style.display = 'block';
                 isValid = false;
             }
 
